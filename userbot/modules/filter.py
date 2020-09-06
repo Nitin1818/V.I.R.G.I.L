@@ -10,39 +10,59 @@ import time
 
 from userbot import LOGGER, LOGGER_GROUP
 from userbot.events import register
-import userbot.modules.sql_helper.filter_sql as sql
 
 
 @register(incoming=True)
 async def filter_incoming_handler(e):
-    listes = e.text.split(" ")
-    filters = sql.get_filters(e.chat_id)
-    for t in filters:
-        for r in listes:
-            pro = re.fullmatch(t.keyword, r, flags=re.IGNORECASE)
-            if pro:
-                await e.reply(t.reply)
+    try:
+        if not (await e.get_sender()).bot:
+            try:
+                from userbot.modules.sql_helper.filter_sql import get_filters
+            except:
+                await e.edit("`Running on Non-SQL mode!`")
                 return
+            listes = e.text.split(" ")
+            filters = get_filters(e.chat_id)
+            for t in filters:
+                for r in listes:
+                    pro = re.fullmatch(t.keyword, r, flags=re.IGNORECASE)
+                    if pro:
+                        await e.reply(t.reply)
+                        return
+    except:
+        pass
 
 
 @register(outgoing=True, pattern="^.filter\\s.*")
 async def add_filter(e):
     chat = await e.get_chat()
-    message = e.text
-    kek = message.split()
-    string = ""
-    for i in range(2, len(kek)):
-        string = string + " " + str(kek[i])
-        sql.add_filter(str(e.chat_id), kek[1], string)
-        await e.edit(f"`Filter added successfully in {e.chat.title}.`")
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.modules.sql_helper.filter_sql import add_filter
+        except:
+            await e.edit("`Running on Non-SQL mode!`")
+            return
+        message = e.text
+        kek = message.split()
+        string = ""
+        for i in range(2, len(kek)):
+            string = string + " " + str(kek[i])
+        add_filter(str(e.chat_id), kek[1], string)
+        await e.edit(f"Filter `{string}` added successfully in {e.chat.title}.")
 
 
 @register(outgoing=True, pattern="^.stop\\s.*")
 async def remove_filter(e):
-    message = e.text
-    kek = message.split(" ")
-    sql.remove_filter(e.chat_id, kek[1])
-    await e.edit(f"```That filter has been removed successfully from {e.chat.title}```")
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.modules.sql_helper.filter_sql import remove_filter
+        except:
+            await e.edit("`Running on Non-SQL mode!`")
+            return
+        message = e.text
+        kek = message.split(" ")
+        remove_filter(e.chat_id, kek[1])
+        await e.edit(f"```That filter has been removed successfully from {e.chat.title}```")
 
 
 @register(outgoing=True, pattern="^.rmfilters$")
@@ -67,8 +87,13 @@ async def kick_marie_filter(e):
 
 @register(outgoing=True, pattern="^.filters$")
 async def filters_active(e):
-    transact = f"Filters active in **{e.chat.title}:** \n\n"
-    filters = sql.get_filters(e.chat_id)
-    for i in filters:
-        transact = transact + "• " + i.keyword + "\n"
-    await e.edit(transact)
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.modules.sql_helper.filter_sql import get_filters
+        except:
+            return
+        transact = f"Filters active in {e.chat.title}: \n\n"
+        filters = get_filters(e.chat_id)
+        for i in filters:
+            transact = transact + "• " + i.keyword + "\n"
+        await e.edit(transact)
