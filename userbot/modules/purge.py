@@ -89,7 +89,7 @@ async def delmsg(delme):
                         LOGGER_GROUP,
                         "Deletion of message was successful"
                     )
-            except Exception is rpcbaseerrors.BadRequestError:
+            except (Exception, rpcbaseerrors.BadRequestError):
                 if LOGGER:
                     await delme.send_message(
                         LOGGER_GROUP,
