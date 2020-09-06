@@ -13,10 +13,8 @@ from telethon.tl.functions.account import (UpdateProfileRequest,
                                            UpdateUsernameRequest)
 from telethon.tl.functions.channels import EditPhotoRequest
 from telethon.tl.functions.photos import UploadProfilePhotoRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import (MessageEntityMentionName, MessageMediaDocument,
+from telethon.tl.types import (MessageMediaDocument,
                                MessageMediaPhoto)
-from telethon.utils import get_input_location
 from userbot.events import register
 from userbot import bot
 

@@ -4,8 +4,6 @@
 # you may not use this file except in compliance with the License.
 #
 import time
-
-from telethon import events
 from telethon.events import StopPropagation
 
 from userbot import (AFKREASON, COUNT_MSG, ISAFK, LOGGER, LOGGER_GROUP, USERS)

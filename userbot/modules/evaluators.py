@@ -4,9 +4,8 @@
 # you may not use this file except in compliance with the License.
 #
 
-import asyncio, sys, io, traceback, inspect, time, subprocess
+import asyncio, sys, io, traceback, subprocess
 from getpass import getuser
-from telethon import (events, errors, functions, types)
 from userbot import *
 from userbot.events import register
 

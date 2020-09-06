@@ -8,8 +8,6 @@ import random
 import time
 from asyncio import create_subprocess_shell as asyncsh
 from asyncio.subprocess import PIPE as asyncsh_PIPE
-from subprocess import PIPE
-from subprocess import run as runapp
 
 import pybase64
 from requests import get, post

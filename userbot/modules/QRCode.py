@@ -8,8 +8,6 @@ import asyncio
 import os
 from datetime import datetime
 import requests
-
-from userbot import LOGGER, LOGGER_GROUP
 from userbot.events import register
 
 download_directory = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./downloads/")

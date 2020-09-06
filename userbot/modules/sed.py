@@ -7,7 +7,7 @@
 import re
 import sre_constants
 
-from userbot import LOGGER, LOGGER_GROUP
+from userbot import LOGGER
 from userbot.events import register
 
 DELIMITERS = ("/", ":", "|", "_")

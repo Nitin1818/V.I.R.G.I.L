@@ -5,10 +5,9 @@
 #
 
 import importlib
-import sqlite3
 import sys
 
-from userbot import BRAIN_CHECKER, LOGS, bot
+from userbot import LOGS, bot
 from userbot.modules import ALL_MODULES
 
 

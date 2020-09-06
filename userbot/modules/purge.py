@@ -4,10 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 
-import asyncio
 import time
-
-from async_generator import aclosing
 from telethon.errors import rpcbaseerrors
 
 from userbot import LOGGER, LOGGER_GROUP

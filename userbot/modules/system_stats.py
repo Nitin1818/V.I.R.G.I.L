@@ -4,12 +4,9 @@
 # you may not use this file except in compliance with the License.
 #
 
-import asyncio
 from asyncio import create_subprocess_shell as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 from shutil import which
-
-from userbot import LOGGER, LOGGER_GROUP
 from userbot.events import register
 
 
