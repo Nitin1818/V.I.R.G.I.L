@@ -7,9 +7,9 @@ from time import sleep
 
 from telethon.errors import BadRequestError
 from telethon.errors.rpcerrorlist import UserIdInvalidError
-from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
+from telethon.tl.functions.channels import (EditAdminRequest, EditBannedRequest)
 
-from telethon.tl.types import ChatAdminRights, ChatBannedRights
+from telethon.tl.types import (ChatAdminRights, ChatBannedRights)
 
 from userbot import (LOGGER, LOGGER_GROUP)
 from userbot.events import register
@@ -34,7 +34,7 @@ async def promote(promt):
 
         # Self explanatory
         if not await promt.get_reply_message():
-            await promt.edit("`Give a reply message`")
+            await promt.edit("`reply usermsg with this cmd`")
         elif not admin and creator:
             rights = new_rights
         elif not admin and not creator:
@@ -48,13 +48,13 @@ async def promote(promt):
                                  (await promt.get_reply_message()).sender_id,
                                  new_rights, "admin")
             )
-            await promt.edit(f"**Promoted Successfully in {promt.chat.title}!**")
+            await promt.edit(f"**Promoted Successfully in {promt.chat.title}**")
 
         # If Telethon spit BadRequestError, assume
         # we don't have Promote permission
         except BadRequestError:
             await promt.edit(
-                "`You Don't have sufficient permissions to promote`"
+                f"**I Don't have sufficient permissions can_promote in {promt.chat.title}**"
                 )
             return
 
@@ -71,11 +71,11 @@ async def demote(dmod):
 
         # If there's no reply, return
         if not await dmod.get_reply_message():
-            await dmod.edit("`Give a reply message`")
+            await dmod.edit("`reply to usermsg to demote`")
             return
         # If not admin and not creator, also return
         if not admin and not creator:
-            await dmod.edit("`You aren't an admin!`")
+            await dmod.edit("`Im not admeme sed -_-`")
             return
 
         # If passing, declare that we're going to demote
@@ -102,10 +102,10 @@ async def demote(dmod):
         # Assume we don't have permission to demote
         except BadRequestError:
             await dmod.edit(
-                "`You Don't have sufficient permissions to demote`"
+                f"**I Don't have sufficient permissions to demote someone in {dmod.chat.title}**"
                 )
             return
-        await dmod.edit("**Demoted Successfully! in {dmod.chat.title}**")
+        await dmod.edit(f"**User has been Demoted in {dmod.chat.title}**")
 
 
 @register(outgoing=True, pattern="^.ban$")
