@@ -46,15 +46,15 @@ async def promote(promt):
             await promt.client(
                 EditAdminRequest(promt.chat_id,
                                  (await promt.get_reply_message()).sender_id,
-                                 rights, "admin")
+                                 new_rights, "admin")
             )
-            await promt.edit("**Promoted Successfully!**")
+            await promt.edit(f"**Promoted Successfully in {promt.chat.title}!**")
 
         # If Telethon spit BadRequestError, assume
         # we don't have Promote permission
         except BadRequestError:
             await promt.edit(
-                "`You Don't have sufficient permissions to parmod`"
+                "`You Don't have sufficient permissions to promote`"
                 )
             return
 
@@ -102,10 +102,10 @@ async def demote(dmod):
         # Assume we don't have permission to demote
         except BadRequestError:
             await dmod.edit(
-                "`You Don't have sufficient permissions to demhott`"
+                "`You Don't have sufficient permissions to demote`"
                 )
             return
-        await dmod.edit("**Demoted Successfully!**")
+        await dmod.edit("**Demoted Successfully! in {dmod.chat.title}**")
 
 
 @register(outgoing=True, pattern="^.ban$")
