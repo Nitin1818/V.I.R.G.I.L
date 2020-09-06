@@ -6,11 +6,7 @@
 
 import asyncio
 import re
-import sqlite3
 import time
-
-from sqlalchemy import (Boolean, Column, Integer, String, UnicodeText,
-                        distinct, func)
 
 from userbot import LOGGER, LOGGER_GROUP
 from userbot.events import register

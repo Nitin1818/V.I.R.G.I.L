@@ -9,7 +9,7 @@ import re
 from asyncio import create_subprocess_shell as asyncsh
 from asyncio.subprocess import PIPE as asyncsh_PIPE
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import urbandict
 import wikipedia

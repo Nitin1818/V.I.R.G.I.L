@@ -4,7 +4,6 @@
 # you may not use this file except in compliance with the License.
 #
 
-import asyncio
 import json
 import os
 import subprocess
@@ -13,8 +12,6 @@ from datetime import datetime
 import requests
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from PIL import Image
-from telethon.errors import MessageNotModifiedError
 from telethon.tl.types import DocumentAttributeVideo
 
 from userbot import LOGS
