@@ -6,6 +6,7 @@
 # Licensed under the Raphielscape Public License, Version 1.0 (the "License");
 # you may not use this file except in compliance with the License.
 #
+import sys
 import os
 
 from sys import version_info
@@ -31,7 +32,7 @@ if version_info[0] < 3 or version_info[1] < 8:
         "You MUST have a python version of at least 3.8."
         "Multiple features depend on this. Bot quitting."
     )
-    quit(1)
+    sys.exit(1)
 
 try:
     print(___________PLOX_______REMOVE_____THIS_____LINE__________)
@@ -76,7 +77,7 @@ else:
         "Your config file seems to be un-edited."
         "Doing so is not allowed. Bot exiting!"
     )
-    quit(1)
+    sys.exit(1)
     
 if STRING_SESSION:
     # pylint: disable=invalid-name
