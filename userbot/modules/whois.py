@@ -55,8 +55,8 @@ async def who(event):
     last_name = replied_user.user.last_name
     common_chat = replied_user.common_chats_count
     username = replied_user.user.username
-    user_bio = replied_user.about
-    muted = is_muted(user_id)
+    bio = replied_user.about
+    silent = is_muted(user_id)
 
     try:
         photo = await event.client.download_profile_photo(
@@ -81,11 +81,11 @@ async def who(event):
     else:
         username = "This User has no Username"
     if user_bio:
-        user_bio = user_bio
+        user_bio = bio
     else:
         user_bio = "This User has no About"
     if muted:
-        muted = "si"
+        muted = silent
     else:
         muted = "Nope"
 
