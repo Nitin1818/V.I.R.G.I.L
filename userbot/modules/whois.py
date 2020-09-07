@@ -55,7 +55,7 @@ async def who(event):
     last_name = replied_user.user.last_name
     common_chat = replied_user.common_chats_count
     username = replied_user.user.username
-    bio = replied_user.about
+    user_bio = replied_user.about
 
     try:
         photo = await event.client.download_profile_photo(
@@ -80,7 +80,7 @@ async def who(event):
     else:
         username = NULL
     if user_bio:
-        user_bio = bio
+        user_bio = user_bio
     else:
         user_bio = NULL
 
