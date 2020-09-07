@@ -7,7 +7,7 @@
 import os
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
-
+from userbot.modules.sql_helper.spam_mute_sql import is_muted
 from userbot.events import register
 
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./")
@@ -56,6 +56,7 @@ async def who(event):
     common_chat = replied_user.common_chats_count
     username = replied_user.user.username
     user_bio = replied_user.about
+    muted = is_muted(user_id)
 
     try:
         photo = await event.client.download_profile_photo(
@@ -83,6 +84,10 @@ async def who(event):
         user_bio = user_bio
     else:
         user_bio = "This User has no About"
+    if muted:
+        muted = "si"
+    else:
+        muted = "Nope"
 
     caption = "<b>USER INFO:</b> \n"
     caption += f"First Name: {first_name} \n"
@@ -90,6 +95,7 @@ async def who(event):
     caption += f"Username: {username} \n"
     caption += f"ID: <code>{user_id}</code> \n \n"
     caption += f"Bio: \n<code>{user_bio}</code> \n \n"
+    caption += f"Muted: \n<code>{muted}</code> \n \n"
     caption += f"Common Chats with this user: {common_chat} \n"
     caption += f"Permanent Link To Profile: "
     caption += f"<a href=\"tg://user?id={user_id}\">{first_name}</a>"
