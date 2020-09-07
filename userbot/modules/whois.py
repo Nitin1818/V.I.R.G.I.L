@@ -7,10 +7,10 @@
 import os
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
-from userbot.modules.sql_helper.spam_mute_sql import is_muted
 from userbot.events import register
 
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./")
+NULL = "null"
 
 
 @register(pattern="\.whois ?(.*)", outgoing=True)
@@ -56,7 +56,6 @@ async def who(event):
     common_chat = replied_user.common_chats_count
     username = replied_user.user.username
     bio = replied_user.about
-    silent = is_muted(user_id)
 
     try:
         photo = await event.client.download_profile_photo(
@@ -71,33 +70,28 @@ async def who(event):
     if first_name:
         first_name = first_name.replace("\u2060", "")
     else:
-        first_name = "This User has no First Name"
+        first_name = NULL
     if last_name:
         last_name = last_name.replace("\u2060", "")
     else:
-        last_name = "This User has no Last Name"
+        last_name = NULL
     if username:
         username = "@{}".format(username)
     else:
-        username = "This User has no Username"
+        username = NULL
     if user_bio:
         user_bio = bio
     else:
-        user_bio = "This User has no About"
-    if muted:
-        muted = silent
-    else:
-        muted = "Nope"
+        user_bio = NULL
 
     caption = "<b>USER INFO:</b> \n"
-    caption += f"First Name: {first_name} \n"
-    caption += f"Last Name: {last_name} \n"
+    caption += f"FName: {first_name} \n"
+    caption += f"LName: {last_name} \n"
     caption += f"Username: {username} \n"
     caption += f"ID: <code>{user_id}</code> \n \n"
     caption += f"Bio: \n<code>{user_bio}</code> \n \n"
-    caption += f"Muted: \n<code>{muted}</code> \n \n"
-    caption += f"Common Chats with this user: {common_chat} \n"
-    caption += f"Permanent Link To Profile: "
+    caption += f"Common Chats: {common_chat} \n"
+    caption += f"link: "
     caption += f"<a href=\"tg://user?id={user_id}\">{first_name}</a>"
 
     message_id_to_reply = event.message.reply_to_msg_id
