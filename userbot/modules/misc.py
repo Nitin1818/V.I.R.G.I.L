@@ -4,18 +4,18 @@
 # you may not use this file except in compliance with the License.
 #
 
-import random
-import time
+import random, time, pybase64
 from asyncio import create_subprocess_shell as asyncsh
 from asyncio.subprocess import PIPE as asyncsh_PIPE
 
-import pybase64
-from requests import get, post
-
+from requests import (get, post)
+from telethon import version
+from platform import python_version
 from userbot.events import register
-from userbot import LOGGER, LOGGER_GROUP
+from userbot import (LOGGER, LOGGER_GROUP, bot)
 
 DOGBIN_URL = "https://del.dog/"
+START_TIME = datetime.now()
 
 
 @register(outgoing=True, pattern="^.paste")
@@ -145,8 +145,16 @@ async def randomise(e):
 
 @register(outgoing=True, pattern="^.alive$")
 async def amialive(e):
+    me = await bot.get_me()
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("`Yo Master! I am alive 🙃`")
+        await e.edit(
+            f"**UserBotN is Working Fine!** \n"
+            f"**Since:** `{START_TIME}` \n"
+            f"**Telethon version:** `{version.__version__}` \n"
+            f"**Python version:** `{python_version()}` \n"
+            f"**Repo:** [GitHub](https://github.com/Nitin1818/UserBotN) \n\n"
+            f"**Master:** [{me.first_name}](tg://user?id={me.id})"
+            )
 
 
 @register(outgoing=True, pattern="^.chatid$")
