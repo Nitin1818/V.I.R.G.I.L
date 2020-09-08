@@ -7,7 +7,7 @@
 import random, time, pybase64
 from asyncio import create_subprocess_shell as asyncsh
 from asyncio.subprocess import PIPE as asyncsh_PIPE
-
+from datetime import datetime
 from requests import (get, post)
 from telethon import version
 from platform import python_version
@@ -207,7 +207,7 @@ async def support_channel(e):
 
 
 @register(outgoing=True, pattern="^.userid$")
-async def chatidgetter(e):
+async def userid(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         message = await e.get_reply_message()
         if message:
