@@ -6,7 +6,7 @@
 
 import asyncio, sys, io, traceback, subprocess
 from getpass import getuser
-from userbot import *, bot
+from userbot import bot
 from userbot.events import register
 
 
