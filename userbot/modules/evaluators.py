@@ -8,7 +8,7 @@ import asyncio, sys, io, traceback, subprocess
 from getpass import getuser
 from userbot import bot
 from userbot.events import register
-
+from userbot import (LOGGER, LOGGER_GROUP)
 
 @register(outgoing=True, pattern="^.eval")
 async def _(event):
