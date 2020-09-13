@@ -92,7 +92,7 @@ async def _(e):
         if os.path.exists(input_str):
             start = datetime.now()
             await e.edit("Processing ...")
-            lst_of_files = lst_of_files(input_str, [])
+            lst_of_files = list_of_files(input_str, [])
             LOGS.info(lst_of_files)
             u = 0
             await e.edit(
