@@ -92,15 +92,15 @@ async def _(e):
         if os.path.exists(input_str):
             start = datetime.now()
             await e.edit("Processing ...")
-            lst_of_files = list_of_files(input_str, [])
-            LOGS.info(lst_of_files)
+            list_of_files = input_str, []
+            LOGS.info(list_of_files)
             u = 0
             await e.edit(
                 "Found {} files. Uploading will start soon. Please wait!".format(
-                    len(lst_of_files)
+                    len(list_of_files)
                 )
             )
-            for single_file in lst_of_files:
+            for single_file in list_of_files:
                 if os.path.exists(single_file):
                     # https://stackoverflow.com/a/678242/4723940
                     caption_rts = os.path.basename(single_file)
