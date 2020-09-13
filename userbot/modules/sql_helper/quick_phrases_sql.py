@@ -8,7 +8,7 @@ from sqlalchemy import Column, String, UnicodeText
 
 class QuickPhrase(BASE):
     __tablename__ = "quickphrases"
-    resp = Column(String(10),primary_key=True)
+    resp = Column(String(10), primary_key=True)
     phrase = Column(UnicodeText, primary_key=True)
 
     def __init__(self, resp, phrase):
@@ -33,7 +33,7 @@ def add_phrase(resp, phrase):
 
 
 def remove_phrase(resp, phrase):
-    rem = SESSION.query(QuickPhrase).get((str(resp),str(phrase)))
+    rem = SESSION.query(QuickPhrase).get((str(resp), str(phrase)))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
