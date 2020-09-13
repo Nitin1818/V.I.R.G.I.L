@@ -92,7 +92,7 @@ async def profile_photo(ppht):
         if photo:
             file = await bot.upload_file(photo)
             try:
-                await bot(EditPhotoRequest(e.chat_id, file))
+                await bot(EditPhotoRequest(ppht.chat_id, file))
                 await ppht.edit(CHAT_PP_CHANGED)
 
             except Exception as exc:
