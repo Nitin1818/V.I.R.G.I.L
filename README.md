@@ -1,10 +1,4 @@
-[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Nitin1818/UserbotN/?ref=repository-badge)
-
-
-[![CodeFactor](https://www.codefactor.io/repository/github/nitin1818/userbotn/badge)](https://www.codefactor.io/repository/github/nitin1818/userbotn)
-
----
-# Telegram-UserBot
+# V.I.R.G.I.L UserBot
 
  #### To track Semaphore builds, see the commits section. Since I use Semaphore 2.0, it is not possible to track the progress fully, or put a badge here. Ignore Travis CI for PRs.
 
@@ -26,17 +20,7 @@
 - /
 ```
 
-A modular telegram Python UserBot running on python3 with an sqlalchemy database.
-
-Started up as a simple bot, which helps with deleting messages and other stuffs when I didn't possess a smartphone(selecting each message indeed difficult) with a ton of meme features kanged from [SkittBot](https://github.com/skittles9823/SkittBot), it has evolved, becoming extremely modular and simple to use.
-
-
-If you just want to stay in the loop about new features or
-announcements you can join the [news channel](https://t.me/maestro_userbot_channel).
-
-If you find any bugs or have any suggestions then don't hesitate to contact me in [my support group](https://t.me/userbot_support).
-
-- This README is not guaranteed to always be up to date, refer to the [support channel](https://t.me/maestro_userbot_channel) for the latest informations.
+A modular telegram UserBot running on python3 with an sqlalchemy database.
 
 ## Getting your own userbot up and running:
 
@@ -229,17 +213,4 @@ Should you need assistance with telethon library check out their [documentation]
 
 ### Credits:
 
-I would like to thank people who assisted me throughout this project:
-
-* [@YouTwitFace](https://github.com/YouTwitFace)
-* [@TheDevXen](https://github.com/TheDevXen)
-* [@Skittles9823](https://github.com/Skittles9823)
-* [@deletescape](https://github.com/deletescape)
-* [@songotenks69](https://github.com/songotenks69)
-* [@Ovenoboyo](https://github.com/Ovenoboyo)
-* [SphericalKat](https://github.com/ATechnoHazard)
-* [nitamarcel](https://github.com/nitanmarcel)
-
-and many more people who aren't mentioned here.
-
-Found Bugs? Create an issue on the issue tracker, or post it in the [support group](https://t.me/userbot_support).
+Paperplane Userbot
