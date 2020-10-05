@@ -148,11 +148,11 @@ async def amialive(e):
     me = await bot.get_me()
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
-            f"**UserBotN is Working Fine!** \n"
+            f"**V.I.R.G.I.L is Working Fine!** \n"
             f"**Since:** `{START_TIME}` \n"
             f"**Telethon version:** `{version.__version__}` \n"
             f"**Python version:** `{python_version()}` \n"
-            f"**Repo:** [GitHub](https://github.com/Nitin1818/UserBotN) \n\n"
+            f"**Repo:** [GitHub](https://github.com/Nitin1818/V.I.R.G.I.L) \n\n"
             f"**Master:** [{me.first_name}](tg://user?id={me.id})"
             )
 
@@ -197,7 +197,7 @@ async def bot_support(e):
 @register(outgoing=True, pattern="^.repo$")
 async def repo_is_here(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("**Here is the repo that I'm using** `https://github.com/Nitin1818/UserBotN`")
+        await e.edit("**Here is the repo that I'm using** `https://github.com/Nitin1818/V.I.R.G.I.L`")
 
 
 @register(outgoing=True, pattern="^.supportchannel$")
