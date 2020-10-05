@@ -8,7 +8,7 @@
 #
 import sys
 import os
-
+import spamwatch
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
@@ -42,6 +42,8 @@ except NameError:
     API_HASH = os.environ.get("API_HASH", None)
     
     SUDO_USERS = os.environ.get("SUDO_USERS", None)
+    
+    SW_TOKEN = os.environ.get("SW_TOKEN", None)
     
 
     LOGGER_GROUP = int(os.environ.get("LOGGER_GROUP", "0"))
@@ -93,6 +95,13 @@ else:
                          API_HASH,
                          auto_reconnect=False,
                          lang_code='en')
+                         
+sw_token = SW_TOKEN
+if sw_token == None:
+    spamwtc = None
+    LOGS.error("Invalid spamwatch api")
+else:
+    spamwtc = spamwatch.Client(sw_token)
 
 # Global Variables
 SNIPE_TEXT = ""
