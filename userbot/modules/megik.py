@@ -1,4 +1,5 @@
 from userbot.events import register
+from telethon.errors import BadRequestError
 from userbot import bot
 from telethon.tl.functions.messages import UpdatePinnedMessageRequest
 
@@ -18,7 +19,7 @@ async def bmegik(event):
     return
   
   try:
-    await bot(UpdatePinnedMessageRequest(event.to_id, event.reply_to_msg_id == None))
+    await bot(UpdatePinnedMessageRequest(event.to_id, event.reply_to_msg_id is None))
   except BadRequestError:
         await event.edit("I don't have sufficient permissions to update this chat")
         return
